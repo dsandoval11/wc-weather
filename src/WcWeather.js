@@ -10,14 +10,14 @@ export class WcWeather extends LitElement {
   static get properties() {
     return {
       city: { type: String },
-      weather: { attribute: false }
+      weather: { attribute: false },
     };
   }
 
   constructor() {
     super();
     this.city = 'Cali';
-    this.regionNames = new Intl.DisplayNames(['es'], {type: 'region'});
+    this.regionNames = new Intl.DisplayNames(['es'], { type: 'region' });
     this.weather = {
       city: '',
       countryCode: '',
@@ -26,8 +26,8 @@ export class WcWeather extends LitElement {
       humidity: '',
       icon: '01d',
       temperature: '',
-      wind: ''
-    }
+      wind: '',
+    };
   }
 
   firstUpdated() {
@@ -35,8 +35,10 @@ export class WcWeather extends LitElement {
   }
 
   updated(changedProperties) {
-    if(changedProperties.has('city')) {
-      getTemperature(this.city).then((data) => { this.weather = data });
+    if (changedProperties.has('city')) {
+      getTemperature(this.city).then(data => {
+        this.weather = data;
+      });
     }
   }
 
@@ -54,10 +56,10 @@ export class WcWeather extends LitElement {
     return html`
       <h2>${this.city}</h2>
       <form @submit=${this.search}>
-        <input type="text" id="city">
-        <button type="submit">Buscar</button>
+        <input placeholder="Buscar ciudad" type="text" id="city" />
+        <button type="submit">&#9906;</button>
       </form>
-      <hr>
+      <hr />
       <div class="container">
         <div class="info-city">
           <span class="city">
@@ -68,10 +70,17 @@ export class WcWeather extends LitElement {
           <span>Humedad: ${this.weather.humidity}%</span>
         </div>
         <div class="weather">
-          <img src=${getIcon(this.weather.icon)} alt=${this.weather.description}>
+          <img
+            src=${getIcon(this.weather.icon)}
+            alt=${this.weather.description}
+          />
           <div class="temp">
-            <span class="real">Temperatura: ${this.weather.temperature} °C</span>
-            <span class="feels-like">Sensación térmica: ${this.weather.feelsLike} °C</span>
+            <span class="real"
+              >Temperatura: ${this.weather.temperature} °C</span
+            >
+            <span class="feels-like"
+              >Sensación térmica: ${this.weather.feelsLike} °C</span
+            >
           </div>
         </div>
       </div>

@@ -7,12 +7,46 @@ export default css`
     font-family: 'Poppins', sans-serif;
     width: 100%;
     padding: 25px;
-    color: var(--temperature-comp-text-color, #000);
+    color: var(--temperature-comp-text-color, #202d5b);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     background-color: #ffe5b5;
+  }
+
+  form {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  input {
+    border: none;
+    border-bottom: 2px solid #202d5b;
+    background: none;
+    font-size: 24px;
+    width: 600px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input::placeholder {
+    font-family: 'Poppins', sans-serif;
+    color: rgba(32, 45, 91, 0.3);
+  }
+
+  button {
+    background: none;
+    border: none;
+    transform: rotate(-45deg);
+    font-size: 28px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #202d5b;
+    cursor: pointer;
   }
 
   .container {
