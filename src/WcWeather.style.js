@@ -53,11 +53,18 @@ export default css`
     background: #fffffb;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     border-radius: 25px;
-    display: flex;
-    justify-content: space-between;
     max-width: 800px;
     width: 90%;
     padding: 42px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
   }
 
   .info-city {
@@ -88,5 +95,12 @@ export default css`
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .weather-img {
+    position: absolute;
+    top: -100px;
+    right: -65px;
+    width: 300px;
   }
 `;

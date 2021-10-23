@@ -61,28 +61,31 @@ export class WcWeather extends LitElement {
       </form>
       <hr />
       <div class="container">
-        <div class="info-city">
-          <span class="city">
-            ${this.weather.city}, ${this.getCountry(this.weather.countryCode)}
-          </span>
-          <span class="description">${this.weather.description}</span>
-          <span>Viento: ${this.weather.wind} KM/h</span>
-          <span>Humedad: ${this.weather.humidity}%</span>
-        </div>
-        <div class="weather">
-          <img
-            src=${getIcon(this.weather.icon)}
-            alt=${this.weather.description}
-          />
-          <div class="temp">
-            <span class="real"
-              >Temperatura: ${this.weather.temperature} °C</span
-            >
-            <span class="feels-like"
-              >Sensación térmica: ${this.weather.feelsLike} °C</span
-            >
+        <div class="content">
+          <div class="info-city">
+            <span class="city">
+              ${this.weather.city}, ${this.getCountry(this.weather.countryCode)}
+            </span>
+            <span class="description">${this.weather.description}</span>
+            <span>Viento: ${this.weather.wind} KM/h</span>
+            <span>Humedad: ${this.weather.humidity}%</span>
+          </div>
+          <div class="weather">
+            <div class="temp">
+              <span class="real"
+                >Temperatura: ${this.weather.temperature} °C</span
+              >
+              <span class="feels-like"
+                >Sensación térmica: ${this.weather.feelsLike} °C</span
+              >
+            </div>
           </div>
         </div>
+        <img
+          class="weather-img"
+          src=${getIcon(this.weather.icon)}
+          alt=${this.weather.description}
+        />
       </div>
     `;
   }
