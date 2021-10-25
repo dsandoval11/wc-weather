@@ -1,3 +1,5 @@
+import icons from './icons.js';
+
 const API = 'https://api.openweathermap.org/data/2.5/weather';
 const API_KEY = 'API_KEY';
 
@@ -9,13 +11,11 @@ export const getTemperature = async (city) => {
     city: name,
     countryCode: sys.country,
     description: weather[0].description,
-    feelsLike: main.feels_like,
+    feelsLike: parseInt(main.feels_like, 10),
     humidity: main.humidity,
-    icon: weather[0].icon,
-    temperature: main.temp,
+    icon: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
+    temperature: parseInt(main.temp, 10),
     wind: wind.speed
   }
   return weatherData;
 }
-
-export const getIcon = (iconCode) => `https://openweathermap.org/img/wn/${iconCode}@2x.png`
