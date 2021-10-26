@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+.container {
+  background: #cfcfcf;
+}
+
+/* .weather {
+  --wc-weather-bg: #cfcfcf;
+  font-family: monospace;
+  color: #007cff;
+} */
+
 body {
   margin: 0;
 }

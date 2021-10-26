@@ -12,7 +12,7 @@ export default css`
   }
 
   .container {
-    background: #fffffb;
+    background: var(--wc-weather-bg, #fffffb);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     border-radius: 20px;
     width: 100%;
@@ -39,20 +39,23 @@ export default css`
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 16px;
+    min-width: 360px;
     text-shadow: rgb(165 165 165) 0px 2px 2px;
   }
 
   .temperature {
     font-size: 70px;
+    margin-bottom: 12px;
+    min-width: 160px;
   }
 
   .description {
-    text-transform: uppercase;
     background-color: #f3efec;
-    padding: 8px 12px;
     border-radius: 25px;
     font-size: 14px;
     letter-spacing: 0.05em;
+    padding: 8px 12px;
+    text-transform: uppercase;
   }
 
   .weather {
@@ -60,6 +63,15 @@ export default css`
     flex-direction: column;
     justify-content: center;
     gap: 12px;
+  }
+
+  .weather div {
+    display: flex;
+    gap: 4px;
+  }
+
+  .weather span {
+    min-width: 80px;
   }
 
   .weather img {
@@ -72,6 +84,21 @@ export default css`
     top: -100px;
     right: -100px;
     width: 300px;
+  }
+
+  .skeleton .weather img {
+    background: #e2e2e2;
+    object-position: 50px;
+    border-radius: 8px;
+  }
+
+  .skeleton .weather-img {
+    display: none;
+  }
+
+  .skeleton .description {
+    min-height: 16px;
+    min-width: 160px;
   }
 
   .skeleton span {
@@ -105,5 +132,4 @@ export default css`
       left: 100%;
     }
   }
-
 `;

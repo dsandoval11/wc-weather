@@ -1,4 +1,5 @@
 import { html, LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import styles from './WcWeather.style.js';
 import { getTemperature } from './service.js';
 
@@ -19,35 +20,28 @@ export class WcWeather extends LitElement {
     super();
     this.city = 'Cali';
     this.loading = false;
-    this.regionNames = new Intl.DisplayNames(['es'], { type: 'region' });
     this.weather = {};
-  }
-
-  firstUpdated() {
-    // this.cityInput = this.renderRoot.getElementById('city');
   }
 
   updated(changedProperties) {
     if (changedProperties.has('city')) {
       this.loading = true;
-      getTemperature(this.city).then(data => {
-        this.weather = data;
-        this.loading = false;
-      });
+      setTimeout(()=> {
+        getTemperature(this.city).then(data => {
+          this.weather = data;
+          this.loading = false;
+        });
+      }, 0);
     }
-  }
-
-  getCountry(countryCode = '') {
-    return this.regionNames.of(countryCode);
   }
 
   render() {
     return html`
-      <div class="container skeleton">
+      <div class="container ${classMap({skeleton: this.loading})}">
         <div class="content">
           <div class="info-city">
             <span class="city">
-              ${this.weather?.city}, ${this.getCountry(this.weather?.countryCode)}
+              ${this.weather?.city}, ${this.weather?.country}
             </span>
             <span class="temperature">${this.weather?.temperature}°C</span>
             <span class="description">${this.weather?.description}</span>

@@ -16,7 +16,7 @@ render(
       <input placeholder="Buscar ciudad" type="text" id="city" />
       <button type="submit">&#9906;</button>
     </form>
-    <wc-weather city='Cali'>
+    <wc-weather class="weather" city='Cali'>
     </wc-weather>
   `,
   document.querySelector('#demo')
